@@ -1,5 +1,5 @@
 import IngredientPage from './IngredientPage.vue';
 
-export default {
+export {
     IngredientPage
 };

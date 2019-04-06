@@ -1,5 +1,5 @@
 import HomePage from './HomePage.vue'
 
-export default {
+export {
     HomePage
 }

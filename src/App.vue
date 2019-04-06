@@ -9,7 +9,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import NavigationBar from './components/Navigation/NavigationBar.vue'
-import routes from './routes.js'
+import { routes } from './routes.js'
 
 Vue.use(VueRouter);
 
