@@ -12,4 +12,5 @@ export default {
 </script>
 
 <style>
+@import url('./IngredientPage.css');
 </style>
