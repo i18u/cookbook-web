@@ -1,6 +1,6 @@
 <template>
     <div>
-        Test1
+        Ingredients
     </div>
 </template>
 
