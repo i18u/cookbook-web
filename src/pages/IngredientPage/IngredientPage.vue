@@ -1,6 +1,6 @@
 <template>
     <div>
-        Test1
+        Ingredients
     </div>
 </template>
 
@@ -12,4 +12,5 @@ export default {
 </script>
 
 <style>
+@import url('./IngredientPage.css');
 </style>
