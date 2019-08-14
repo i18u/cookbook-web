@@ -1,6 +1,13 @@
-version: '3'
+version: '3.4'
 services:
   frontend:
-    build: .
+    build:
+      context: .
+      target: 'develop-stage'
     ports:
-      - "8080:8080"
+    - '8080:8080'
+    volumes:
+    - '.:/app'
+    command: /bin/sh -c "yarn serve"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
