@@ -11,3 +11,9 @@ services:
     command: /bin/sh -c "yarn serve"
     environment:
       - CHOKIDAR_USEPOLLING=true
+  backend:
+    image: registry.imaaronnicetomeetyou.me/cookbook/ingredients-api:0.0.4
+    ports:
+      - "5000:80"
+    environment:
+      - COOKBOOK_MONGO_ADDRESS=192.168.2.38:27017

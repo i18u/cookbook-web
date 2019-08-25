@@ -1,16 +1,16 @@
 <template>
     <div>
-        Ingredients
+        Home
     </div>
 </template>
 
 <script>
 export default {
-    name: 'ingredient-page',
-    props: {}
+    name: 'home-page',
+    props: []
 }
 </script>
 
 <style>
-@import url('./IngredientPage.css');
+
 </style>

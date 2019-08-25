@@ -29,5 +29,29 @@ export default {
 </script>
 
 <style>
-@import url("./App.css");
+body, html {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	background-color: #ffeeee;
+}
+
+button::-moz-focus-inner {
+	border: 0;
+}
+
+.page-container {
+  padding: 15px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+#app {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
 </style>
