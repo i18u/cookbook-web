@@ -24,8 +24,7 @@
 							</div>
 						</div>
 						<div class="right-aside aside">
-							<img class="upload-image" src="/assets/icons/ingredients-black.svg" alt="ingredients by Becris from the Noun Project"/><br/>
-							<input class="img-upload-input" type="file" />
+							<image-upload class="image-upload-input" placeholderUrl="/assets/icons/ingredients-black.svg" placeholderText="Ingredient" />
 						</div>
 					</form>
 				</div>
@@ -35,6 +34,7 @@
 </template>
 
 <script>
+import ImageUpload from '@/components/Files/ImageUpload.vue';
 import VueTagsInput from '@johmun/vue-tags-input';
 import { IngredientApi } from '@/apis/ingredients';
 
@@ -71,6 +71,7 @@ export default {
 	},
 	components: {
 		VueTagsInput,
+		ImageUpload,
 	},
 	methods: {
 		onTagsChanged(newTags) {
@@ -141,6 +142,11 @@ export default {
 	.ingredient-form {
 		display: flex;
 		margin-top: 10px;
+		max-height: calc(100% - 50px);
+	}
+
+	.aside {
+		max-height: 100%;
 	}
 
 	.left-aside {
@@ -248,13 +254,12 @@ export default {
 		min-height: 100px;
 	}
 
-	.upload-image {
+	.image-upload-input {
 		max-width: 80%;
-		max-height: 80%;
-	}
-
-	.img-upload-input {
-		display: none;
+		width: 80%;
+		max-height: 100%;
+		height: 100%;
+		margin: auto;
 	}
 
 	.flat-button {
