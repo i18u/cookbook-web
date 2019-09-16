@@ -24,7 +24,7 @@
 							</div>
 						</div>
 						<div class="right-aside aside">
-							<image-upload class="image-upload-input" placeholderUrl="/assets/icons/ingredients-black.svg" placeholderText="Ingredient" />
+							<image-upload class="image-upload-input" placeholderUrl="/assets/icons/ingredients-black.svg" placeholderText="Ingredient" @saved="onImageSaved" />
 						</div>
 					</form>
 				</div>
@@ -45,6 +45,7 @@ export default {
 			tag: '',
 			ingredientName: '',
 			ingredientDescription: '',
+			ingredientImageLocation: '',
 			unsaved: true,
 			availableTags: [{
 				text: "tangy"
@@ -83,12 +84,21 @@ export default {
 					this.unsaved = false;
 				});
 		},
+		onImageSaved(evt) {
+			this.ingredientImageLocation = evt.location;
+			// eslint-disable-next-line
+			console.log(evt.location);
+		},
 		onAddIngredientClick() {
 			const ingredient = {
 				name: this.ingredientName,
 				description: this.ingredientDescription,
 				tags: this.tags.map(tag => tag.text),
+				img: this.ingredientImageLocation,
 			};
+
+			// eslint-disable-next-line
+			console.log(ingredient);
 
 			this.saveIngredient(ingredient)
 				.then(() => {

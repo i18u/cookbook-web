@@ -1,20 +1,22 @@
 <template>
 	<div class="image-upload">
 		<div class="image-upload-inner">
-			<div class="image-upload-overlay">
+			<div class="image-upload-overlay" @click="onClick">
 				<div class="image-upload-overlay-text">
 					Upload File
 				</div>
 			</div>
 			<div class="image-preview-container">
-				<img class="image-preview" :src="placeholderUrl" :alt="placeholderText" />
+				<img class="image-preview" :src="imageUrl" :alt="imageText"/>
 			</div>
-			<input class="image-upload-input-field" type="file" />
+			<input ref="imageField" class="image-upload-input-field" type="file" accept="image/*" @change="onFileChange" />
 		</div>
 	</div>
 </template>
 
 <script>
+import { Files } from '@/apis/files';
+
 export default {
 	name: 'image-upload',
 	props: {
@@ -26,6 +28,36 @@ export default {
 			imageUrl: this.placeholderUrl,
 			imageText: this.placeholderText,
 		};
+	},
+	methods: {
+		onClick(evts) {
+			const me = this;
+			me.$emit('click');
+			me.$refs.imageField.click(evts);
+		},
+		async onFileChange() {
+			const me = this;
+			const element = this.$refs.imageField;
+			const formData = new FormData();
+
+			if (element.files.length !== 1) {
+				return;
+			}
+
+			formData.append('file', element.files[0]);
+
+			Files.create(formData)
+				.then((response) => {
+					var { location } = response.data;
+					
+					me.imageUrl = location;
+					me.$emit("saved", { location, target: me });
+				})
+				.catch((response) => {
+					// eslint-disable-next-line
+					console.log(response);
+				});
+		}
 	},
 };
 </script>
@@ -44,12 +76,14 @@ export default {
 .image-preview-container {
 	width: 100%;
 	height: 100%;
+	text-align: center;
 }
 
 .image-preview {
 	display: block;
 	max-height: 100%;
 	max-width: 100%;
+	margin: auto;
 }
 
 .image-upload-overlay {

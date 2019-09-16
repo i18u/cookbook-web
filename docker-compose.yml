@@ -11,9 +11,15 @@ services:
     command: /bin/sh -c "yarn serve"
     environment:
       - CHOKIDAR_USEPOLLING=true
-  backend:
-    image: registry.imaaronnicetomeetyou.me/cookbook/ingredients-api:0.0.4
+  ingredients:
+    image: registry.imaaronnicetomeetyou.me/cookbook/ingredients-api:0.0.5
     ports:
-      - "5000:80"
+      - "80"
     environment:
-      - COOKBOOK_MONGO_ADDRESS=host.docker.internal:27017
+      - COOKBOOK_MONGO_ADDRESS=192.168.2.59:27017
+  files:
+    image: registry.imaaronnicetomeetyou.me/cookbook/file-api:latest
+    ports:
+      - "80"
+    environment:
+      - MONGO_SERVER=192.168.2.59:27017
