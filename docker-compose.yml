@@ -23,3 +23,5 @@ services:
       - "80"
     environment:
       - MONGO_SERVER=192.168.2.59:27017
+    volumes:
+      - ./data:/srv/cookbook/files

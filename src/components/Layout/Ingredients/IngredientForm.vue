@@ -86,8 +86,6 @@ export default {
 		},
 		onImageSaved(evt) {
 			this.ingredientImageLocation = evt.location;
-			// eslint-disable-next-line
-			console.log(evt.location);
 		},
 		onAddIngredientClick() {
 			const ingredient = {
@@ -96,9 +94,6 @@ export default {
 				tags: this.tags.map(tag => tag.text),
 				img: this.ingredientImageLocation,
 			};
-
-			// eslint-disable-next-line
-			console.log(ingredient);
 
 			this.saveIngredient(ingredient)
 				.then(() => {

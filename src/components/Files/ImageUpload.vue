@@ -27,6 +27,7 @@ export default {
 		return {
 			imageUrl: this.placeholderUrl,
 			imageText: this.placeholderText,
+			api: Files,
 		};
 	},
 	methods: {
@@ -46,7 +47,7 @@ export default {
 
 			formData.append('file', element.files[0]);
 
-			Files.create(formData)
+			this.api.create(formData)
 				.then((response) => {
 					var { location } = response.data;
 					
