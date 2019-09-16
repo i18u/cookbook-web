@@ -1,9 +1,14 @@
 <template>
 	<div class="image-upload">
 		<div class="image-upload-inner">
-			<div class="image-upload-overlay" @click="onClick">
+			<div v-if="!loading" class="image-upload-overlay" @click="onClick">
 				<div class="image-upload-overlay-text">
 					Upload File
+				</div>
+			</div>
+			<div v-else class="image-upload-overlay loading">
+				<div class="loader-wrapper">
+					<LoopingRhombusesSpinner class="loader" :animation-duration="2500" :rhombus-size="20" color="#ff8080" />
 				</div>
 			</div>
 			<div class="image-preview-container">
@@ -15,6 +20,7 @@
 </template>
 
 <script>
+import { LoopingRhombusesSpinner } from 'epic-spinners';
 import { Files } from '@/apis/files';
 
 export default {
@@ -23,11 +29,15 @@ export default {
 		placeholderUrl: String,
 		placeholderText: String,
 	},
+	components: {
+		LoopingRhombusesSpinner,
+	},
 	data() {
 		return {
 			imageUrl: this.placeholderUrl,
 			imageText: this.placeholderText,
 			api: Files,
+			loading: false,
 		};
 	},
 	methods: {
@@ -41,6 +51,9 @@ export default {
 			const element = this.$refs.imageField;
 			const formData = new FormData();
 
+			me.loading = true;
+			me.imageUrl = "";
+
 			if (element.files.length !== 1) {
 				return;
 			}
@@ -52,6 +65,8 @@ export default {
 					var { location } = response.data;
 					
 					me.imageUrl = location;
+					me.loading = false;
+
 					me.$emit("saved", { location, target: me });
 				})
 				.catch((response) => {
@@ -100,6 +115,25 @@ export default {
 .image-upload-overlay:hover {
 	opacity: 1;
 	transition: background-color 0.4s ease;
+}
+
+.image-upload-overlay.loading {
+	opacity: 1;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.loader-wrapper {
+	height: 25px;
+	width: 100%;
+	text-align: center;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}
+
+.loader {
+	margin: auto;
 }
 
 .image-upload-input-field {
