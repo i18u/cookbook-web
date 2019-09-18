@@ -1,0 +1,15 @@
+stages:
+  - build
+
+image: node:alpine
+
+build:
+  stage: build
+  tags:
+    - docker
+  script:
+    - yarn
+    - yarn build
+  artifacts:
+    paths:
+      - dist
