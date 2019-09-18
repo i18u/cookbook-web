@@ -14,6 +14,10 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const loadMinified = require('./load-minified')
 
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
@@ -23,6 +27,10 @@ const webpackConfig = merge(baseWebpackConfig, {
     rules: utils.styleLoaders({
       sourceMap: config.build.productionSourceMap,
       extract: true
+    }).concat({
+      test: /\.js$/,
+      loader: 'babel-loader',
+      include: [resolve('node_modules/epic-spinners/src')]
     })
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
