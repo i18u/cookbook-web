@@ -223,13 +223,14 @@ export default {
 	}
 
 	.ingredient-input, .vue-tags-input .ti-new-tag-input, .vue-tags-input .ti-tag {
-		font-size: 24px;
+		font-size: 2em;
 	}
 
 	.add-tag-button {
 		height: 100%;
-		width: 48px;
-		padding: 0;
+		width: calc(2em - 1px);
+		height: calc(2em - 2px);
+		padding: 4px;
 		margin: 0;
 		border-top: 1px solid #ccc;
 		border-right: 1px solid #ccc;
@@ -237,7 +238,7 @@ export default {
 		background: #ff8080;
 		border-left: none;
 		vertical-align: middle;
-		box-sizing: border-box;
+		box-sizing: content-box;
 	}
 
 	.add-tag-button:active, .add-tag-button:focus {
@@ -289,5 +290,16 @@ export default {
 
 	.buttons {
 		text-align: right;
+	}
+
+	@media screen and (max-width: 768px) {
+		.ingredient-form-shadow {
+			font-size: 0.5em;
+		}
+
+		.ingredient-form-modal {
+			width: 95%;
+			height: 50%;
+		}
 	}
 </style>
