@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const instance = axios.create({
 	baseURL: "http://localhost:8080/api/",
-	timeout: 10000,
+	timeout: 30000,
 });
 
 const sleep = function sleep(ms) {
@@ -17,13 +17,16 @@ const MockApi = {
 	}
 };
 
-const IngredientApi = {
-	save(ingredient) {
-		return instance.post('/ingredient', ingredient)
+const Files = {
+	create(ingredient) {
+		return instance.post('/files', ingredient)
 	},
+	get(fileId) {
+		return instance.get('/files', fileId);
+	}
 };
 
 export {
-	IngredientApi,
+	Files,
 	MockApi
 };

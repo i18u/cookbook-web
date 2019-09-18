@@ -1,8 +1,11 @@
 module.exports = {
 	devServer: {
 		proxy: {
-			'^/api': {
-				target: 'http://backend:80'
+			'^/api/ingredient': {
+				target: 'http://ingredients:80'
+			},
+			'^/api/files': {
+				target: 'http://files:80'
 			}
 		}
 	}
