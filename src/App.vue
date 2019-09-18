@@ -6,39 +6,39 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import NavigationBar from './components/Navigation/NavigationBar.vue'
-import { routes } from './routes.js'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import NavigationBar from './components/Navigation/NavigationBar';
+import routes from './routes';
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({
   mode: 'history',
-  routes
+  routes,
 });
 
 export default {
   name: 'app',
   components: {
-    NavigationBar
+    NavigationBar,
   },
   router,
-  template: "<App/>"
-}
+  template: '<App/>',
+};
 </script>
 
 <style>
 body, html {
-	width: 100%;
-	height: 100%;
-	padding: 0;
-	margin: 0;
-	background-color: #ffeeee;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #ffeeee;
 }
 
 button::-moz-focus-inner {
-	border: 0;
+  border: 0;
 }
 
 .page-container {
@@ -49,9 +49,9 @@ button::-moz-focus-inner {
 }
 
 #app {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 </style>

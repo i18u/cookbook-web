@@ -1,9 +1,9 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import App from './App';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-new Vue({
+new Vue({ // eslint-disable-line no-new
   el: '#app',
-  ...App
+  ...App,
 });

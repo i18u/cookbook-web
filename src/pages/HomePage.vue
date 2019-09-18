@@ -6,9 +6,9 @@
 
 <script>
 export default {
-    name: 'home-page',
-    props: []
-}
+  name: 'home-page',
+  props: [],
+};
 </script>
 
 <style>
