@@ -11,8 +11,8 @@
 
 <script>
 export default {
-    name: 'page-not-found-page',
-    props: []
+  name: 'page-not-found-page',
+  props: [],
 };
 </script>
 
